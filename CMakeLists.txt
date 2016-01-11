@@ -8,6 +8,10 @@ SET(HEADERS FFmpegLauncher.h
             ImageWriter.h
             VideoWriter.h)
 
+SET(SAMPLE_FILES sample/main.cpp
+                 sample/SigKillHandler.h
+                 sample/SigKillHandler.cpp)
+
 FIND_PACKAGE(Qt4 REQUIRED)
 SET(QT_USE_QTNETWORK true)
 INCLUDE(${QT_USE_FILE})
@@ -22,6 +26,6 @@ add_library(video_writer ${SOURCES} ${HEADERS})
 set_target_properties(video_writer PROPERTIES AUTOMOC true)
 target_link_libraries(video_writer)
 
-add_executable(video_writer-main sample/main.cpp ${RESOURCES_MOC})
+add_executable(video_writer-main ${SAMPLE_FILES} ${RESOURCES_MOC})
 target_link_libraries(video_writer-main video_writer ${QT_LIBRARIES})
 set_target_properties(video_writer-main PROPERTIES AUTOMOC true)

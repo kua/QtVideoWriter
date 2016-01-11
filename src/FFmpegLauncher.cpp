@@ -40,10 +40,7 @@ FFmpegLauncher::FFmpegLauncher(const int serverPort, const QString& workingDir, 
 
 FFmpegLauncher::~FFmpegLauncher()
 {
-  disconnect(&m_process, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(onFinished(int, QProcess::ExitStatus)));
-
   m_timer.stop();
-  m_process.kill();
   m_process.waitForFinished();
 }
 
@@ -82,7 +79,7 @@ void FFmpegLauncher::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
     m_timer.start(TIMEOUT);
 
     qDebug() << QString::fromUtf8("ffmpeg process for writing video file  ") + m_lastFileName
-             + QString::fromUtf8("has aborted, restart attempt will be performed through ")
+             + QString::fromUtf8(" has aborted, restart attempt will be performed through ")
              + QString::number(TIMEOUT) + QString::fromUtf8(" milliseconds.");
   }
 }

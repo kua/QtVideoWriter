@@ -16,8 +16,8 @@ public:
   VideoWriter(const int communicationPort = 7777,
              const QString& workingDir = QString::fromUtf8("."),
              const QString& filePrefixName = QString::fromUtf8("video_"))
-    : m_imageDistributor(communicationPort)
-    , m_ffmpegRunner(communicationPort, workingDir, filePrefixName, this)
+    : m_ffmpegRunner(communicationPort, workingDir, filePrefixName, this)
+    , m_imageDistributor(communicationPort)
   {
   }
 
@@ -42,8 +42,8 @@ public:
     m_imageDistributor.stop();
   }
 
-  ImageWriterLauncher m_imageDistributor;
   FFmpegLauncher m_ffmpegRunner;
+  ImageWriterLauncher m_imageDistributor;
 }; // class VideoWriter
 
 #endif //_VideoWriter_H_INCLUDED_

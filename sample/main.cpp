@@ -1,4 +1,5 @@
 #include "VideoWriter.h"
+#include "SigKillHandler.h"
 #include <QImage>
 #include <QTimer>
 #include <QDateTime>
@@ -47,6 +48,7 @@ private:
 int main(int argc, char *argv[])
 {
   QApplication app(argc, argv); //for the possibility of drawing on Qimage with a QPainter.
+  SigKillHandler sigkillHandler;
 
   Q_INIT_RESOURCE(sample);
 
